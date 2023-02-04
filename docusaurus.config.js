@@ -64,9 +64,9 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: '周小小的博客',
         logo: {
-          alt: 'My Site Logo',
+          alt: '成长之路',
           src: 'img/logo.svg',
         },
         items: [

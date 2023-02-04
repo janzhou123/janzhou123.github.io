@@ -1,4 +1,4 @@
-name: janzhou123 Blog
+name: Blog Deploy
 on:
   push:
     branches:

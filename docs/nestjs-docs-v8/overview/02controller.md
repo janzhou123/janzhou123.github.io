@@ -291,7 +291,7 @@ export class CreateCatDto {
 ### 处理错误
 这里有一个关于处理错误的单独章节（即，与异常一起工作）。
 
-### 完整例子#
+### 完整例子
 下面是一个例子，利用几个可用的装饰器来创建一个基本的控制器。这个控制器暴露了一些方法来访问和操作内部数据。
 ```jsx title="cats.controller.ts"
 import { Controller, Get, Query, Post, Body, Put, Param, Delete } from '@nestjs/common';

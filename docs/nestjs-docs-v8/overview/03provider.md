@@ -4,9 +4,11 @@ sidebar_position: 3
 hide_title: true
 ---
 
-### Providers
+### Providers 提供者
 
 Providers are a fundamental concept in Nest. Many of the basic Nest classes may be treated as a provider – services, repositories, factories, helpers, and so on. The main idea of a provider is that it can be **injected** as a dependency; this means objects can create various relationships with each other, and the function of "wiring up" instances of objects can largely be delegated to the Nest runtime system.
+
+ `Providers`在Nest中是一个基础性的概念。许多Nest基类都被认为是provider，`services`, `repositories`, `factories`, `helpers`等等。
 
 <figure><img src="/assets/Components_1.png" /></figure>
 

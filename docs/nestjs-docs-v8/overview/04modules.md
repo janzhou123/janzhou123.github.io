@@ -153,7 +153,7 @@ export class CatsModule {
 }
 ```
 
-However, module classes themselves cannot be injected as providers due to [circular dependency](/fundamentals/circular-dependency) .
+<!-- However, module classes themselves cannot be injected as providers due to [circular dependency](/fundamentals/circular-dependency) . -->
 
 #### Global modules
 
@@ -181,7 +181,7 @@ The `@Global()` decorator makes the module global-scoped. Global modules should 
 
 #### Dynamic modules
 
-The Nest module system includes a powerful feature called **dynamic modules**. This feature enables you to easily create customizable modules that can register and configure providers dynamically. Dynamic modules are covered extensively [here](/fundamentals/dynamic-modules). In this chapter, we'll give a brief overview to complete the introduction to modules.
+<!-- The Nest module system includes a powerful feature called **dynamic modules**. This feature enables you to easily create customizable modules that can register and configure providers dynamically. Dynamic modules are covered extensively [here](/fundamentals/dynamic-modules). In this chapter, we'll give a brief overview to complete the introduction to modules. -->
 
 Following is an example of a dynamic module definition for a `DatabaseModule`:
 
@@ -268,6 +268,6 @@ import { User } from './users/entities/user.entity';
 export class AppModule {}
 ```
 
-The [Dynamic modules](/fundamentals/dynamic-modules) chapter covers this topic in greater detail, and includes a [working example](https://github.com/nestjs/nest/tree/master/sample/25-dynamic-modules).
+<!-- The [Dynamic modules](/fundamentals/dynamic-modules) chapter covers this topic in greater detail, and includes a [working example](https://github.com/nestjs/nest/tree/master/sample/25-dynamic-modules). -->
 
-> info **Hint** Learn how to build highly customizable dynamic modules with the use of `ConfigurableModuleBuilder` here in [this chapter](/fundamentals/dynamic-modules#configurable-module-builder).
+<!-- > info **Hint** Learn how to build highly customizable dynamic modules with the use of `ConfigurableModuleBuilder` here in [this chapter](/fundamentals/dynamic-modules#configurable-module-builder). -->

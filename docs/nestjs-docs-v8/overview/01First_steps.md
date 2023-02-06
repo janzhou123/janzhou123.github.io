@@ -3,7 +3,7 @@ sidebar_label: 第一步
 sidebar_position: 1
 hide_title: true
 ---
-# 第一步
+### 第一步
 在这组文章中，你将学习Nest的核心基础知识。为了熟悉Nest应用程序的基本构件，我们将建立一个基本的CRUD应用程序，其功能涵盖了入门级的很多方面。
 
 ### 语言

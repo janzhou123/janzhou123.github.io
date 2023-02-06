@@ -12,7 +12,7 @@ hide_title: true
 
 为了创建一个基本的控制器，我们使用类和装饰器。装饰器将类与所需的元数据联系起来，并使Nest能够创建一个路由图（将请求绑定到相应的控制器）。
 
-:::tip
+:::tip 提示
 为了快速创建一个内置验证的CRUD控制器，你可以使用CLI的CRUD生成器：`nest g resource [name]`。
 ::: 
 
@@ -31,7 +31,7 @@ export class CatsController {
 }
 ```
 
-:::tip
+:::tip 提示
 要使用CLI创建一个控制器，只需执行`$ nest g controller cats`命令。
 ::: 
 
@@ -50,7 +50,7 @@ export class CatsController {
 | `Standard (recommended)`        | 使用这种内置方法，当请求处理程序返回一个JavaScript对象或数组时，它将自动被序列化为JSON。然而，当它返回一个JavaScript原始类型（例如，字符串、数字、布尔值）时，Nest将只发送值，而不尝试对其进行序列化。这使得响应处理变得简单：只需返回值，Nest就会处理其余的事情。此外，响应的状态代码默认总是200，除了使用201的POST请求。我们可以通过在处理程序级别添加@HttpCode(...)装饰器来轻松改变这一行为（见状态代码）。      |
 | `Library-specific`   | 我们可以使用库特定的（例如Express）响应对象，它可以使用方法处理签名中的@Res()装饰器注入（例如findAll(@Res() response)）。通过这种方法，你有能力使用该对象所暴露的本地响应处理方法。例如，在Express中，你可以使用response.status(200).send()这样的代码来构造响应。       |
 
-:::caution
+:::caution 警告
  NEST会检测处理程序是否使用@Res()或@Next()，表明你选择了库的特定选项。如果同时使用这两种方法，标准方法将自动禁用于该单一路由，并不再按预期工作。要同时使用这两种方法（例如，通过注入响应对象只设置cookie/头文件，但仍将其余部分留给框架），你必须在@Res({ passthrough: true })装饰器中将passthrough选项设置为true。
 :::  
 
@@ -70,7 +70,7 @@ export class CatsController {
 }
 ```
 
-:::tip
+:::tip 提示
 为了利用表达式类型的优势（如上面的request: Request参数的例子），请安装@types/express包。
 ::: 
 
@@ -139,7 +139,7 @@ create() {
   return 'This action adds a new cat';
 }
 ```
-:::tip
+:::tip 提示
 从`@nestjs/common`包导入`HttpCode`
 ::: 
 
@@ -156,7 +156,7 @@ create() {
 }
 ```
 
-:::tip
+:::tip  提示
 从`@nestjs/common`包导入`Header`
 ::: 
 
@@ -199,7 +199,7 @@ findOne(@Param() params): string {
 
 `@Param()`被用来装饰一个方法参数（上面例子中的`params`），并使路由参数作为该方法主体中被装饰的方法参数的属性可用。正如上面的代码所见，我们可以通过引用`params.id`来访问`id参数`。你也可以向装饰器传递一个特定的参数标记，然后在方法主体中直接引用路由参数的名称。
 
-:::tip
+:::tip 提示
 从`@nestjs/common`包导入`Param`
 ::: 
 
@@ -245,7 +245,7 @@ export class AccountController {
 
 ### 异步性
 我们热爱现代JavaScript，我们知道数据提取大多是异步的。这就是为什么Nest支持并能很好地使用异步函数。
-:::tip
+:::tip 提示
 学习` async / await`[`请点击这里`](https://kamilmysliwiec.com/typescript-2-1-introduction-async-await)
 :::
 
@@ -284,7 +284,7 @@ export class CreateCatDto {
 ```
 它只有三个基本属性。此后我们可以在`CatsController`中使用新创建的`DTO`。
 
-:::tip
+:::tip 提示
 我们的Validation Pipe可以过滤掉那些不应该被方法处理程序接收的属性。在这种情况下，我们可以将可接受的属性列入白名单，任何不包括在白名单中的属性都会自动从结果对象中剥离。在`CreateCatDto`的例子中，我们的白名单是`名称、年龄和品种属性`。[`在这里了解更多。`](https://docs.nestjs.com/techniques/validation#stripping-properties)
 :::
 
@@ -326,7 +326,7 @@ export class CatsController {
 }
 ```
 
-:::tip
+:::tip 提示
 Nest CLI提供了一个自动生成器（示意图），自动生成所有的模板代码，以帮助我们避免做这些事情，并使开发人员的体验更加简单。在这里阅读更多关于[`这个功能的信息`](https://docs.nestjs.com/v8/recipes/crud-generator)。
 :::
 

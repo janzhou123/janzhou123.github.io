@@ -46,7 +46,7 @@ bootstrap();
 为了创建一个Nest应用程序实例，我们使用核心的NestFactory类。NestFactory暴露了一些静态方法，允许创建一个应用程序实例。create()方法返回一个应用程序对象，它满足INestApplication接口。这个对象提供了一系列的方法，这些方法将在接下来的章节中描述。在上面的main.ts例子中，我们简单地启动了我们的HTTP监听器，它让应用程序等待进入的HTTP请求。
 
 请注意，用Nest CLI搭建的项目会创建一个初始项目结构，鼓励开发者遵循惯例，将每个模块放在自己的专用目录中。
-:::tip
+:::tip 提示
 默认情况下，如果在创建应用程序时发生任何错误，你的应用程序将以代码1退出。如果你想让它抛出一个错误，而不是禁用选项abortOnError（例如，NestFactory.create(AppModule, { abortOnError: false }））。
 ::: 
 

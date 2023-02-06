@@ -67,7 +67,7 @@ const config = {
         title: '周小小的博客',
         logo: {
           alt: '成长之路',
-          src: 'img/logo.svg',
+          src: 'img/mylogo2.png',
         },
         items: [
           {

@@ -4,33 +4,31 @@ sidebar_position: 4
 hide_title: true
 ---
 
-### Modules
+### 模块
+模块就是一个声明了装饰器`@Module()`的类。装饰器`@Module()`提供了元数据，以便让`Nest`组织应用程序结构。
 
-A module is a class annotated with a `@Module()` decorator. The `@Module()` decorator provides metadata that **Nest** makes use of to organize the application structure.
+![来自静态目录的图像](../../images/nestjs-docs-v8/overview/Modules_1.png)
 
-<figure><img src="/assets/Modules_1.png" /></figure>
+每个应用程序至少有一个模块，即根模块。根模块是 Nest 用来构建应用程序图的起点，应用程序图是 Nest 用来解析模块和提供者关系和依赖关系的内部数据结构。虽然非常小的应用程序理论上可能只有根模块，但这不是典型情况。我们想强调的是，强烈建议将模块作为组织组件的有效方法。因此，对于大多数应用程序，生成的体系结构将使用多个模块，每个模块封装一组密切相关的功能。
 
-Each application has at least one module, a **root module**. The root module is the starting point Nest uses to build the **application graph** - the internal data structure Nest uses to resolve module and provider relationships and dependencies. While very small applications may theoretically have just the root module, this is not the typical case. We want to emphasize that modules are **strongly** recommended as an effective way to organize your components. Thus, for most applications, the resulting architecture will employ multiple modules, each encapsulating a closely related set of **capabilities**.
+`@Module()`装饰器采用单个对象，其属性描述如下：
 
-The `@Module()` decorator takes a single object whose properties describe the module:
+|||
+|:-----:|:-----:|
+|`providers`| 由 Nest 注入器实例化的提供者，并且可以至少在整个模块中共享|
+|`controllers`|必须创建的一组控制器|
+|`imports`|导入模块的列表，这些模块导出了此模块中所需提供者|
+|`exports`|由本模块提供并应在其他模块中可用的提供者的子集。|
 
-|               |                                                                                                                                                                                                          |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `providers`   | the providers that will be instantiated by the Nest injector and that may be shared at least across this module                                                                                          |
-| `controllers` | the set of controllers defined in this module which have to be instantiated                                                                                                                              |
-| `imports`     | the list of imported modules that export the providers which are required in this module                                                                                                                 |
-| `exports`     | the subset of `providers` that are provided by this module and should be available in other modules which import this module. You can use either the provider itself or just its token (`provide` value) |
+默认情况下，模块封装`providers`。这意味着无法注入既不是当前模块的直接组成部分，也不是从导入的模块导出的`providers`。因此，您可以将模块中导出的`providers`视为模块的公共接口或API。
 
-The module **encapsulates** providers by default. This means that it's impossible to inject providers that are neither directly part of the current module nor exported from the imported modules. Thus, you may consider the exported providers from a module as the module's public interface, or API.
+### 功能模块
 
-#### Feature modules
+`CatsController`和`CatsService`属于同一应用程序域。由于它们密切相关，因此将它们移动到功能模块中是有意义的。功能模块只是组织与特定功能相关的代码，保持代码井井有条并建立清晰的边界。这有助于我们管理复杂性并使用 [SOLID](https://en.wikipedia.org/wiki/SOLID)原则进行开发，尤其是随着应用程序或团队规模的增长的时候。
 
-The `CatsController` and `CatsService` belong to the same application domain. As they are closely related, it makes sense to move them into a feature module. A feature module simply organizes code relevant for a specific feature, keeping code organized and establishing clear boundaries. This helps us manage complexity and develop with [SOLID](https://en.wikipedia.org/wiki/SOLID) principles, especially as the size of the application and/or team grow.
+为了演示这一点，我们将创建`CatsModule`。
 
-To demonstrate this, we'll create the `CatsModule`.
-
-```typescript
-@@filename(cats/cats.module)
+```jsx title="cats/cats.module.ts"
 import { Module } from '@nestjs/common';
 import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
@@ -42,12 +40,13 @@ import { CatsService } from './cats.service';
 export class CatsModule {}
 ```
 
-> info **Hint** To create a module using the CLI, simply execute the `$ nest g module cats` command.
+:::tip 提示
+使用CLI创建模块，只需执行`$ nest g module cats`命令即可。
+:::
 
-Above, we defined the `CatsModule` in the `cats.module.ts` file, and moved everything related to this module into the `cats` directory. The last thing we need to do is import this module into the root module (the `AppModule`, defined in the `app.module.ts` file).
+以上，我们已经创建了`cats.module.ts`文件，并把与这个模块相关的所有东西都移到了`cats`目录下。我们需要做的最后一件事是将这个模块导入根模块 (根模块`AppModule`, 已经定义在`app.module.ts`文件内)。
 
-```typescript
-@@filename(app.module)
+```jsx title="app.module.ts"
 import { Module } from '@nestjs/common';
 import { CatsModule } from './cats/cats.module';
 
@@ -56,41 +55,30 @@ import { CatsModule } from './cats/cats.module';
 })
 export class AppModule {}
 ```
+目录结构如下：
+```
+src
+├──cats
+│    ├──dto
+│    │   └──create-cat.dto.ts
+│    ├──interfaces
+│    │     └──cat.interface.ts
+│    ├─cats.service.ts
+│    ├─cats.controller.ts
+│    └──cats.module.ts
+├──app.module.ts
+└──main.ts
+```
 
-Here is how our directory structure looks now:
+### 共享模块
 
-<div class="file-tree">
-  <div class="item">src</div>
-  <div class="children">
-    <div class="item">cats</div>
-    <div class="children">
-      <div class="item">dto</div>
-      <div class="children">
-        <div class="item">create-cat.dto.ts</div>
-      </div>
-      <div class="item">interfaces</div>
-      <div class="children">
-        <div class="item">cat.interface.ts</div>
-      </div>
-      <div class="item">cats.controller.ts</div>
-      <div class="item">cats.module.ts</div>
-      <div class="item">cats.service.ts</div>
-    </div>
-    <div class="item">app.module.ts</div>
-    <div class="item">main.ts</div>
-  </div>
-</div>
+在 Nest 中，默认情况下，模块是单例的，因此你可以轻松地在多个模块之间共享同一个提供者实例。
 
-#### Shared modules
+![来自静态目录的图像](../../images/nestjs-docs-v8/overview/Shared_Module_1.png)
 
-In Nest, modules are **singletons** by default, and thus you can share the same instance of any provider between multiple modules effortlessly.
+实际上，每个模块都是一个**共享模块**，一旦创建就能被任意模块重复使用。假设我们要在几个模块之间共享`CatsService`实例，则需要把`CatsService`放到模块`CatsModule`的`exports`数组中，如下所示：
 
-<figure><img src="/assets/Shared_Module_1.png" /></figure>
-
-Every module is automatically a **shared module**. Once created it can be reused by any module. Let's imagine that we want to share an instance of the `CatsService` between several other modules. In order to do that, we first need to **export** the `CatsService` provider by adding it to the module's `exports` array, as shown below:
-
-```typescript
-@@filename(cats.module)
+```jsx title="cats/cats.module.ts"
 import { Module } from '@nestjs/common';
 import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
@@ -103,15 +91,13 @@ import { CatsService } from './cats.service';
 export class CatsModule {}
 ```
 
-Now any module that imports the `CatsModule` has access to the `CatsService` and will share the same instance with all other modules that import it as well.
+现在，任何导入`CatsModule`的模块都可以访问`CatsService`，并将与导入`CatsModule`的所有其他模块共享相同的实例。
 
-<app-banner-enterprise></app-banner-enterprise>
+### 模块重新导出
 
-#### Module re-exporting
+如上所示，模块可以导出其内部提供者程序。此外，他们可以重新导出导入的模块。在下面的示例中，`CommonModule`既可导入，又从`CoreModule`导出，使其可用于导入此模块的其他模块。
 
-As seen above, Modules can export their internal providers. In addition, they can re-export modules that they import. In the example below, the `CommonModule` is both imported into **and** exported from the `CoreModule`, making it available for other modules which import this one.
-
-```typescript
+```jsx
 @Module({
   imports: [CommonModule],
   exports: [CommonModule],
@@ -119,12 +105,11 @@ As seen above, Modules can export their internal providers. In addition, they ca
 export class CoreModule {}
 ```
 
-#### Dependency injection
+### 依赖注入
 
-A module class can **inject** providers as well (e.g., for configuration purposes):
+模块类也可以注入提供者程序（例如，出于配置目的）：
 
-```typescript
-@@filename(cats.module)
+```jsx title="cats/cats.module.ts"
 import { Module } from '@nestjs/common';
 import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
@@ -136,32 +121,18 @@ import { CatsService } from './cats.service';
 export class CatsModule {
   constructor(private catsService: CatsService) {}
 }
-@@switch
-import { Module, Dependencies } from '@nestjs/common';
-import { CatsController } from './cats.controller';
-import { CatsService } from './cats.service';
-
-@Module({
-  controllers: [CatsController],
-  providers: [CatsService],
-})
-@Dependencies(CatsService)
-export class CatsModule {
-  constructor(catsService) {
-    this.catsService = catsService;
-  }
-}
 ```
 
-<!-- However, module classes themselves cannot be injected as providers due to [circular dependency](/fundamentals/circular-dependency) . -->
+但是，由于[`循环依赖性`]，模块类不能注入到提供者中。
+
 
 #### Global modules
 
-If you have to import the same set of modules everywhere, it can get tedious. Unlike in Nest, [Angular](https://angular.io) `providers` are registered in the global scope. Once defined, they're available everywhere. Nest, however, encapsulates providers inside the module scope. You aren't able to use a module's providers elsewhere without first importing the encapsulating module.
+如果您必须在任何地方导入同一组模块，则可能会变得乏味。与Nest不同，[Angular](https://angular.io)`提供者`在全局范围内注册。定义后，它们随处可用。但是，Nest将提供程序封装在模块范围内。如果不先导入封装模块，则无法在其他地方使用模块的提供程序。
 
-When you want to provide a set of providers which should be available everywhere out-of-the-box (e.g., helpers, database connections, etc.), make the module **global** with the `@Global()` decorator.
+当您想要提供一组开箱即用的提供程序（例如，帮助程序、数据库连接等）时，请使用`@Global()` 装饰器使模块全局化。
 
-```typescript
+```jsx
 import { Module, Global } from '@nestjs/common';
 import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
@@ -175,18 +146,19 @@ import { CatsService } from './cats.service';
 export class CatsModule {}
 ```
 
-The `@Global()` decorator makes the module global-scoped. Global modules should be registered **only once**, generally by the root or core module. In the above example, the `CatsService` provider will be ubiquitous, and modules that wish to inject the service will not need to import the `CatsModule` in their imports array.
+`@Global()` 装饰器使模块全局可用。全局模块应仅注册一次，通常由根模块或核心模块注册。在上面的例子中，`CatsService`提供程序将无处不在，希望注入服务的模块不需要在其导入数组中导入`CatsModule`。
 
-> info **Hint** Making everything global is not a good design decision. Global modules are available to reduce the amount of necessary boilerplate. The `imports` array is generally the preferred way to make the module's API available to consumers.
+:::tip 提示
+让所有的模块都成为全局模块不是一个好的设计决策。全局模块可用于减少必要的样板数量。`imports` 通常是使模块的 API 可供使用者使用的首选方式。
+:::
 
-#### Dynamic modules
+### 动态模块
 
-<!-- The Nest module system includes a powerful feature called **dynamic modules**. This feature enables you to easily create customizable modules that can register and configure providers dynamically. Dynamic modules are covered extensively [here](/fundamentals/dynamic-modules). In this chapter, we'll give a brief overview to complete the introduction to modules. -->
+Nest模块系统包括一个强大的功能，称为**动态模块**。此功能使您能够轻松创建可动态注册和配置提供程序的可自定义模块。动态模块详细介绍[点这里（/fundamentals/dynamic-modules）]。在本章中，我们将简要概述以完成模块的介绍。
 
-Following is an example of a dynamic module definition for a `DatabaseModule`:
+下面是`DatabaseModule`的动态模块定义示例：
 
-```typescript
-@@filename()
+```jsx
 import { Module, DynamicModule } from '@nestjs/common';
 import { createDatabaseProviders } from './database.providers';
 import { Connection } from './connection.provider';
@@ -204,33 +176,17 @@ export class DatabaseModule {
     };
   }
 }
-@@switch
-import { Module } from '@nestjs/common';
-import { createDatabaseProviders } from './database.providers';
-import { Connection } from './connection.provider';
-
-@Module({
-  providers: [Connection],
-})
-export class DatabaseModule {
-  static forRoot(entities = [], options) {
-    const providers = createDatabaseProviders(options, entities);
-    return {
-      module: DatabaseModule,
-      providers: providers,
-      exports: providers,
-    };
-  }
-}
 ```
 
-> info **Hint** The `forRoot()` method may return a dynamic module either synchronously or asynchronously (i.e., via a `Promise`).
+:::tip 提示
+`forRoot()`方法可以同步或异步返回动态模块（即通过`Promise`）。
+:::
 
-This module defines the `Connection` provider by default (in the `@Module()` decorator metadata), but additionally - depending on the `entities` and `options` objects passed into the `forRoot()` method - exposes a collection of providers, for example, repositories. Note that the properties returned by the dynamic module **extend** (rather than override) the base module metadata defined in the `@Module()` decorator. That's how both the statically declared `Connection` provider **and** the dynamically generated repository providers are exported from the module.
+模块`DatabaseModule`在装饰器`@Module()`中定义了一个`Connection`的提供者，但是此模块的返回值还要看`forRoot()`方法，它返回了一系列的提供者，例如 repositories。所以，请注意动态模块的返回值是扩展了装饰器`@Module()`定义，而不是覆盖。所以模块`DatabaseModule`导出的`providers`，包含两部分，一部分是静态定义的`Connection`，另外一部分是`forRoot()`方法动态生成的providers。
 
-If you want to register a dynamic module in the global scope, set the `global` property to `true`.
+如果你想注册一个全局的动态模块，设置`global`=`true`即可。
 
-```typescript
+```jsx
 {
   global: true,
   module: DatabaseModule,
@@ -239,11 +195,13 @@ If you want to register a dynamic module in the global scope, set the `global` p
 }
 ```
 
-> warning **Warning** As mentioned above, making everything global **is not a good design decision**.
+:::caution 警告
+使所有的模块都成为全局模块，不是一个好的设计策略。
+:::
 
-The `DatabaseModule` can be imported and configured in the following manner:
+可以通过以下方式导入和配置`DatabaseModule`：
 
-```typescript
+```jsx
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from './database/database.module';
 import { User } from './users/entities/user.entity';
@@ -254,9 +212,9 @@ import { User } from './users/entities/user.entity';
 export class AppModule {}
 ```
 
-If you want to in turn re-export a dynamic module, you can omit the `forRoot()` method call in the exports array:
+如果你想反过来重新导出动态模块，你可以在`exports`数组中省略`forRoot()`方法调用：
 
-```typescript
+```jsx
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from './database/database.module';
 import { User } from './users/entities/user.entity';
@@ -268,6 +226,8 @@ import { User } from './users/entities/user.entity';
 export class AppModule {}
 ```
 
-<!-- The [Dynamic modules](/fundamentals/dynamic-modules) chapter covers this topic in greater detail, and includes a [working example](https://github.com/nestjs/nest/tree/master/sample/25-dynamic-modules). -->
+[`动态模块`](https://docs.nestjs.com/fundamentals/dynamic-modules)一章更详细地介绍了本主题，并包含一个[`工作示例`](https://github.com/nestjs/nest/tree/master/sample/25-dynamic-modules)。
 
-<!-- > info **Hint** Learn how to build highly customizable dynamic modules with the use of `ConfigurableModuleBuilder` here in [this chapter](/fundamentals/dynamic-modules#configurable-module-builder). -->
+:::tip 提示
+想要学习如何使用`ConfigurableModuleBuilder`构建高度可定制的动态模块,请阅读[`这里/fundamentals/dynamic-modules#configurable-module-builder`]
+:::

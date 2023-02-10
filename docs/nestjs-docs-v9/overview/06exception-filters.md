@@ -8,7 +8,7 @@ hide_title: true
 
 Nest 带有一个内置的**异常层**，负责处理应用程序中所有未处理的异常。当应用程序代码未处理异常时，该层会捕获该异常，然后自动发送适当的用户友好响应。
 
-![来自静态目录的图像](../../images/nestjs-docs-v8/overview/Filter_1.png)
+![来自静态目录的图像](../../images/nestjs-docs-v9/overview/Filter_1.png)
 
 开箱即用，此操作由内置的全局异常过滤器执行，该过滤器处理类型为`HttpException`（及其子类）的异常。当异常无法识别（既不是 `HttpException` 也不是从`HttpException` 继承的类）时，内置异常过滤器会生成以下默认 JSON 响应：
 
@@ -348,13 +348,13 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
 扩展的方法作用域和控制器作用域的过滤器BaseExceptionFilter不应使用实例化new。相反，让框架自动实例化它们。
 :::
 
-The above implementation is just a shell demonstrating the approach. Your implementation of the extended exception filter would include your tailored **business** logic (e.g., handling various conditions).
+上面的实现只是一个演示方法的 shell。您对扩展异常过滤器的实现将包括您定制的业务逻辑（例如，处理各种条件）。
 
-Global filters **can** extend the base filter. This can be done in either of two ways.
+全局过滤器可以扩展基本过滤器。这可以通过两种方式之一完成。
 
-The first method is to inject the `HttpAdapter` reference when instantiating the custom global filter:
+第一种方法是 `HttpAdapter` 在实例化自定义全局过滤器时注入引用：
 
-```typescript
+```jsx
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
@@ -366,4 +366,4 @@ async function bootstrap() {
 bootstrap();
 ```
 
-The second method is to use the `APP_FILTER` token <a href="exception-filters#binding-filters">as shown here</a>.
+第二种方法是使用此处所示 `APP_FILTER` 的令牌。

@@ -7,7 +7,7 @@ hide_title: true
 ### 模块
 模块就是一个声明了装饰器`@Module()`的类。装饰器`@Module()`提供了元数据，以便让`Nest`组织应用程序结构。
 
-![来自静态目录的图像](../../images/nestjs-docs-v8/overview/Modules_1.png)
+![来自静态目录的图像](../../images/nestjs-docs-v9/overview/Modules_1.png)
 
 每个应用程序至少有一个模块，即根模块。根模块是 Nest 用来构建应用程序图的起点，应用程序图是 Nest 用来解析模块和提供者关系和依赖关系的内部数据结构。虽然非常小的应用程序理论上可能只有根模块，但这不是典型情况。我们想强调的是，强烈建议将模块作为组织组件的有效方法。因此，对于大多数应用程序，生成的体系结构将使用多个模块，每个模块封装一组密切相关的功能。
 
@@ -74,7 +74,7 @@ src
 
 在 Nest 中，默认情况下，模块是单例的，因此你可以轻松地在多个模块之间共享同一个提供者实例。
 
-![来自静态目录的图像](../../images/nestjs-docs-v8/overview/Shared_Module_1.png)
+![来自静态目录的图像](../../images/nestjs-docs-v9/overview/Shared_Module_1.png)
 
 实际上，每个模块都是一个**共享模块**，一旦创建就能被任意模块重复使用。假设我们要在几个模块之间共享`CatsService`实例，则需要把`CatsService`放到模块`CatsModule`的`exports`数组中，如下所示：
 

@@ -6,7 +6,7 @@ hide_title: true
 ### Controller 控制器
 控制器负责处理传入的请求并向客户返回响应。
 
-![来自静态目录的图像](../../images/nestjs-docs-v8/overview/Controllers_1.png)
+![来自静态目录的图像](../../images/nestjs-docs-v9/overview/Controllers_1.png)
 
 一个控制器的目的是接收应用程序的特定请求。路由机制控制哪个控制器接收哪些请求。通常，每个控制器有一个以上的路由，不同的路由可以执行不同的动作。
 

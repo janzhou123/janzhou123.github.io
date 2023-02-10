@@ -7,7 +7,7 @@ hide_title: true
 ### 提供者(Providers)
  `Providers`在Nest中是一个基础性的概念。许多Nest基类都被认为是provider，`services`, `repositories`, `factories`, `helpers`等等`(译者注：这里更愿意理解为组件-Component)`。提供者(组件)可以通过依赖关系直接进行注入，因此各个对象之间可以建立复杂的关系，并且这种复杂的关系是委托给Nest运行时系统进行管理的。提供者是一个我们使用装饰器@Injectable()进行注解的类。
 
-![来自静态目录的图像](../../images/nestjs-docs-v8/overview/Components_1.png)
+![来自静态目录的图像](../../images/nestjs-docs-v9/overview/Components_1.png)
 
 在上一章中，我们构建了一个简单的 CatsController。控制器应处理 HTTP 请求并将更复杂的任务委托给提供程序。Providers是在模块中声明为提供程序的纯 JavaScript 类。
 

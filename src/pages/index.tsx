@@ -17,7 +17,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/nestjs-docs-v8/Introduction">
+            to="/docs/nestjs-docs-v9/Introduction">
             Nestjs官方文档 v9 【译】
           </Link>
         </div>

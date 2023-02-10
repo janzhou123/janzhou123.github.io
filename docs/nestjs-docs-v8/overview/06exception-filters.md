@@ -344,7 +344,9 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
 }
 ```
 
-> warning **Warning** Method-scoped and Controller-scoped filters that extend the `BaseExceptionFilter` should not be instantiated with `new`. Instead, let the framework instantiate them automatically.
+:::caution 警告
+扩展的方法作用域和控制器作用域的过滤器BaseExceptionFilter不应使用实例化new。相反，让框架自动实例化它们。
+:::
 
 The above implementation is just a shell demonstrating the approach. Your implementation of the extended exception filter would include your tailored **business** logic (e.g., handling various conditions).
 

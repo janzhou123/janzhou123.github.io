@@ -286,7 +286,7 @@ export class AppModule {}
 
 在下面的示例中，我们有一个与平台无关的代码，因为它使用HTTP 适配器来传递响应，并且不直接使用任何特定于平台的对象（Request和Response）：
 
-```jsx
+```jsx showLineNumbers
 import {
   ExceptionFilter,
   Catch,
@@ -323,7 +323,9 @@ export class AllExceptionsFilter implements ExceptionFilter {
 }
 ```
 
-> warning **Warning** When combining an exception filter that catches everything with a filter that is bound to a specific type, the "Catch anything" filter should be declared first to allow the specific filter to correctly handle the bound type.
+:::caution 警告
+将捕获所有内容的异常过滤器与绑定到特定类型的过滤器组合时，应首先声明“捕获任何内容”过滤器，以允许特定过滤器正确处理绑定类型。
+:::
 
 #### Inheritance
 
@@ -331,24 +333,18 @@ Typically, you'll create fully customized exception filters crafted to fulfill y
 
 In order to delegate exception processing to the base filter, you need to extend `BaseExceptionFilter` and call the inherited `catch()` method.
 
-```typescript
-@@filename(all-exceptions.filter)
+### 继承
+通常，您将创建完全定制的异常过滤器来满足您的应用程序需求。但是，当您希望简单地扩展内置的默认全局异常过滤器并根据某些因素覆盖行为时，可能会有一些用例。
+
+为了将异常处理委托给基本过滤器，您需要扩展`BaseExceptionFilter`并调用继承的`catch()`方法。
+
+```jsx {4-9} title="all-exceptions.filter"  showLineNumbers
 import { Catch, ArgumentsHost } from '@nestjs/common';
 import { BaseExceptionFilter } from '@nestjs/core';
 
 @Catch()
 export class AllExceptionsFilter extends BaseExceptionFilter {
   catch(exception: unknown, host: ArgumentsHost) {
-    super.catch(exception, host);
-  }
-}
-@@switch
-import { Catch } from '@nestjs/common';
-import { BaseExceptionFilter } from '@nestjs/core';
-
-@Catch()
-export class AllExceptionsFilter extends BaseExceptionFilter {
-  catch(exception, host) {
     super.catch(exception, host);
   }
 }

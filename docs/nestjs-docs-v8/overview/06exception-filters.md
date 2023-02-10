@@ -327,12 +327,6 @@ export class AllExceptionsFilter implements ExceptionFilter {
 将捕获所有内容的异常过滤器与绑定到特定类型的过滤器组合时，应首先声明“捕获任何内容”过滤器，以允许特定过滤器正确处理绑定类型。
 :::
 
-#### Inheritance
-
-Typically, you'll create fully customized exception filters crafted to fulfill your application requirements. However, there might be use-cases when you would like to simply extend the built-in default **global exception filter**, and override the behavior based on certain factors.
-
-In order to delegate exception processing to the base filter, you need to extend `BaseExceptionFilter` and call the inherited `catch()` method.
-
 ### 继承
 通常，您将创建完全定制的异常过滤器来满足您的应用程序需求。但是，当您希望简单地扩展内置的默认全局异常过滤器并根据某些因素覆盖行为时，可能会有一些用例。
 

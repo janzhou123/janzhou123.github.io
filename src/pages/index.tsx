@@ -23,7 +23,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/react-basic/00Introduction">
-            React基础教程
+            React学习笔记
           </Link>
         </div>
       </div>

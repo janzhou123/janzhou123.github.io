@@ -20,6 +20,11 @@ function HomepageHeader() {
             to="/docs/nestjs-docs-v9/Introduction">
             Nestjs官方文档 v9 【译】
           </Link>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/react-basic/00Introduction">
+            React基础教程
+          </Link>
         </div>
       </div>
     </header>

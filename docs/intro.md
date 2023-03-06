@@ -1,6 +1,6 @@
 ---
 sidebar_label: 笔记介绍
-title: 资料集
+title: 笔记
 hide_title: true
 hide_table_of_contents: true
 pagination_next: null

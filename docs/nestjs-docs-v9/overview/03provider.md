@@ -1,5 +1,6 @@
 ---
 sidebar_label: 提供者
+title: 提供者
 sidebar_position: 3
 hide_title: true
 ---

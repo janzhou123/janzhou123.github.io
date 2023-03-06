@@ -1,5 +1,6 @@
 ---
 sidebar_label: React组件
+title: React组件
 sidebar_position: 3
 hide_title: true
 ---

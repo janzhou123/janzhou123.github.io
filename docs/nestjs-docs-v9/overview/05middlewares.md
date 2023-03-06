@@ -1,5 +1,6 @@
 ---
 sidebar_label: 中间件
+title: 中间件
 sidebar_position: 5
 hide_title: true
 ---

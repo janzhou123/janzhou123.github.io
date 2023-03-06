@@ -1,5 +1,6 @@
 ---
 sidebar_label: 模块
+title: 模块
 sidebar_position: 4
 hide_title: true
 ---

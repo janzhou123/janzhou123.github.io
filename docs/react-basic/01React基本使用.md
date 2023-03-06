@@ -1,5 +1,6 @@
 ---
 sidebar_label: React基本使用
+title: React基本使用
 sidebar_position: 2
 hide_title: true
 ---

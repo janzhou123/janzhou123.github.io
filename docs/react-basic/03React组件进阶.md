@@ -1,5 +1,6 @@
 ---
 sidebar_label: React组件进阶(一)
+title: React组件进阶(一)
 sidebar_position: 4
 hide_title: true
 ---

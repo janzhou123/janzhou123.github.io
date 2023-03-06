@@ -1,5 +1,6 @@
 ---
 sidebar_label: 第一步
+title: 第一步
 sidebar_position: 1
 hide_title: true
 ---

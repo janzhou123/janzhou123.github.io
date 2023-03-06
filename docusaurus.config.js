@@ -34,10 +34,8 @@ const config = {
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          blogSidebarTitle: "全部博文",
+          blogSidebarCount: "ALL",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -91,10 +89,10 @@ const config = {
                 label: "博客",
                 to: "blog",
               },
-              // {
-              //   label: "乐趣",
-              //   to: "docs/hackfun-intro",
-              // },
+              {
+                label: "自我介绍",
+                to: "/about",
+              },
               // {
               //   label: "记录生活",
               //   to: "essay",
@@ -118,7 +116,7 @@ const config = {
             title: "更多",
             items: [
               {
-                label: "...",
+                label: "敬请期待",
                 to: "/",
               },
             ],

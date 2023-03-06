@@ -27,7 +27,7 @@ function HomepageHeader() {
             style={{ color: 'var(--ifm-color-primary)' }}
           ></span>欢迎来到Zxx的博客</h1>
         <p className="hero__subtitle">这里会记录我日常工作中使用的和学习的新技术，如果符合你的需求，随便食用。</p>
-        <p className="hero__subtitle">React爱好者，喜爱前端技术，多年后端开发攻城狮，目前寻找全栈工作的机会，目标成为自由职业开发者，如有机会，欢迎来电来函。</p>
+        <p className="hero__subtitle">React爱好者，喜爱前端技术，多年后端开发攻城狮，目前寻找全栈工作的机会，目标成为独立开发者，如有机会，欢迎来电来函。</p>
 
         <animated.div style={trails[3]}>
           <a className={styles.intro} href={'./about'}>

@@ -52,9 +52,9 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "Zhouxiaoxiao",
+        title: "Zxx的博客",
         logo: {
-          alt: "Logo",
+          alt: "博客",
           src: "img/logo.webp",
           style: { borderRadius: "50%" },
         },

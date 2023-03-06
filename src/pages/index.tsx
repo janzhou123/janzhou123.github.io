@@ -14,7 +14,7 @@ function HomepageHeader() {
         <h1 className={styles.hero_title}>
           <span
             style={{ color: 'var(--ifm-color-primary)' }}
-          ></span> ~ 欢迎来到Zxx的博客</h1>
+          ></span>欢迎来到Zxx的博客</h1>
         <p className="hero__subtitle">记录生活学习的每一天</p>
       </div>
       <div className={styles.welcome_svg}>

@@ -28,7 +28,7 @@ $ nest new project-name
 | -------------------------- | ------------------------------ |
 | `app.controller.ts`        | 一个具有单一路线的基本控制器。      |
 | `app.controller.spec.ts`   | 控制器的单元测试       |
-| `aapp.module.ts`           | 应用程序的根模块。       |
+| `app.module.ts`            | 应用程序的根模块。       |
 | `app.service.ts`           | 一个具有单一方法的基本服务       |
 | `main.ts`                  | 应用程序的入口文件，它使用核心函数NestFactory来创建一个Nest应用程序实例       |
 

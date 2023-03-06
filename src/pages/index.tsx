@@ -1,45 +1,40 @@
 import React from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import Head from '@docusaurus/Head';
+import HomepageFeatures from '../components/HomepageFeatures';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/nestjs-docs-v9/Introduction">
-            Nestjs官方文档 v9 【译】
-          </Link>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/react-basic/00Introduction">
-            React学习笔记
-          </Link>
-        </div>
+    <div className="hero">
+      <div className={styles.welcome_intro}>
+        <h1 className={styles.hero_title}>
+          <span
+            style={{ color: 'var(--ifm-color-primary)' }}
+          ></span> ~ 欢迎来到Zxx的博客</h1>
+        <p className="hero__subtitle">记录生活学习的每一天</p>
       </div>
-    </header>
+      <div className={styles.welcome_svg}>
+        <img src={useBaseUrl("/img/program3.jpg")} />
+      </div>
+    </div>
   );
 }
 
-export default function Home(): JSX.Element {
-  const {siteConfig} = useDocusaurusContext();
+export default function Home() {
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="记录生活学习的每一天">
+      <Head>
+        <title>Zxx的博客</title>
+      </Head>
       <HomepageHeader />
       <main>
-        <HomepageFeatures />
+        <br />
+        {/* <HomepageFeatures /> */}
       </main>
     </Layout>
   );

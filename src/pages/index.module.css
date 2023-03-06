@@ -57,4 +57,10 @@
   border-radius: 7px;
   font-family: "Yuanti SC", Youyuan, "You Yuan", "幼圆", "PingFang SC",
     "Microsoft Yahei", Helvetica, sans-serif;
+
+}
+
+.intro:hover {
+  text-decoration: none;
+  color: white;
 }

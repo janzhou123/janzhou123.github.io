@@ -79,47 +79,51 @@ const config = {
       },
       footer: {
         style: "dark",
-        // links: [
-        //   {
-        //     title: 'Docs',
-        //     items: [
-        //       {
-        //         label: 'Tutorial',
-        //         to: '/docs/intro',
-        //       },
-        //     ],
-        //   },
-        //   {
-        //     title: 'Community',
-        //     items: [
-        //       {
-        //         label: 'Stack Overflow',
-        //         href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-        //       },
-        //       {
-        //         label: 'Discord',
-        //         href: 'https://discordapp.com/invite/docusaurus',
-        //       },
-        //       {
-        //         label: 'Twitter',
-        //         href: 'https://twitter.com/docusaurus',
-        //       },
-        //     ],
-        //   },
-        //   {
-        //     title: 'More',
-        //     items: [
-        //       {
-        //         label: 'Blog',
-        //         to: '/blog',
-        //       },
-        //       {
-        //         label: 'GitHub',
-        //         href: 'https://github.com/facebook/docusaurus',
-        //       },
-        //     ],
-        //   },
-        // ],
+        links: [
+          {
+            title: "本站",
+            items: [
+              {
+                label: "笔记",
+                to: "docs/intro",
+              },
+              {
+                label: "博客",
+                to: "blog",
+              },
+              // {
+              //   label: "乐趣",
+              //   to: "docs/hackfun-intro",
+              // },
+              // {
+              //   label: "记录生活",
+              //   to: "essay",
+              // },
+            ],
+          },
+          {
+            title: "我的",
+            items: [
+              {
+                label: "Github",
+                href: "https://github.com/janzhou123",
+              },
+              // {
+              //   label: "CSDN",
+              //   href: "",
+              // },
+            ],
+          },
+          {
+            title: "更多",
+            items: [
+              {
+                label: "...",
+                to: "/",
+              },
+            ],
+          },
+        ],
         copyright: `Copyright © ${new Date().getFullYear()} Zhouxiaoxiao, Inc. Built with Docusaurus.`,
       },
       prism: {

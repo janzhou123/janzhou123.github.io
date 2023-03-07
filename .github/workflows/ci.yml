@@ -27,7 +27,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           ARGS: "-avzr --delete"
-          SOURCE: "build"
+          SOURCE: "build/"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: "root"
-          TARGET: "/data/wwwroot/default"
+          TARGET: "/data/wwwroot/default/"

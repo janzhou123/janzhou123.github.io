@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
-        <title>Zxx的博客 Blog</title>
+        <title>Zxx全栈攻城狮 Blog</title>
         <link>https://janzhou123.github.io/blog</link>
-        <description>Zxx的博客 Blog</description>
-        <lastBuildDate>Fri, 29 Apr 2022 00:00:00 GMT</lastBuildDate>
+        <description>Zxx全栈攻城狮 Blog</description>
+        <lastBuildDate>Sun, 25 Sep 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Nestjs基础配置-@nestjs/config]]></title>
+            <link>https://janzhou123.github.io/blog/nestjs-config-@nestjs/config</link>
+            <guid>https://janzhou123.github.io/blog/nestjs-config-@nestjs/config</guid>
+            <pubDate>Sun, 25 Sep 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Nestjs基础配置-@nestjs/config]]></description>
+            <content:encoded><![CDATA[<p>Nestjs 基础配置-@nestjs/config</p>]]></content:encoded>
+            <category>Nestjs</category>
+            <category>nestjs/config</category>
+        </item>
         <item>
             <title><![CDATA[Git常用命令]]></title>
             <link>https://janzhou123.github.io/blog/git-basic-usage</link>

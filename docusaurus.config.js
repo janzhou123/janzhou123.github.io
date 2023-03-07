@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Zxx的博客",
+  title: "Zxx全栈攻城狮",
   tagline: "坚持学习，坚持进步",
   url: "https://janzhou123.github.io/",
   baseUrl: "/",
@@ -50,7 +50,7 @@ const config = {
       // Replace with your project's social card
       image: "img/docusaurus-social-card.jpg",
       navbar: {
-        title: "Zxx的博客",
+        title: "Zxx全栈攻城狮",
         logo: {
           alt: "博客",
           src: "img/logo.webp",

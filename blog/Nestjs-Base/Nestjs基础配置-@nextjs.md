@@ -65,7 +65,7 @@ export class AppController {
     private readonly configService: ConfigService
   ) {}
 
-  @Get(config)
+  @Get('config')
   getConfig(): any {
     const config = {
       dbType: this.configService.get("DB_TYPE"),

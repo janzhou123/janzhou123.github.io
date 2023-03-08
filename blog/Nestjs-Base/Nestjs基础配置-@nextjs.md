@@ -13,7 +13,7 @@ description: Nestjs基础配置-@nestjs/config
 :::tip 提示
 这里假定你已经建立一个 Nestjs 工程，如果没有请执行如下命令：
 
-nest new config-demo
+`nest new config-demo`
 :::
 
 进入工程目录,执行命令,安装@nestjs/config：
@@ -26,6 +26,7 @@ pnpm add @nestjs/config
 
 ```ts title='.env' showLineNumbers
 DB_TYPE=MYSQL
+DB_NAME=mydemo
 DB_URL=http://localhost:3306
 DB_USER=root
 DB_PWD=root
@@ -65,10 +66,11 @@ export class AppController {
     private readonly configService: ConfigService
   ) {}
 
-  @Get('config')
+  @Get("config")
   getConfig(): any {
     const config = {
       dbType: this.configService.get("DB_TYPE"),
+      dbName: this.configService.get("DB_NAME"),
       dbUrl: this.configService.get("DB_URL"),
       dbUser: this.configService.get("DB_USER"),
       dbPwd: this.configService.get("DB_PWD"),
@@ -83,8 +85,11 @@ export class AppController {
 ```json showLineNumbers
 {
   "dbType": "MYSQL",
+  "dbName": "mydemo",
   "dbUrl": "http://localhost:3306",
   "dbUser": "root",
   "dbPwd": "root"
 }
 ```
+
+下一节我们将介绍 Nestjs 配置的进阶用法。

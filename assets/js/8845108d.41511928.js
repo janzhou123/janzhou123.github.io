@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjanzhou_123_github_io=self.webpackChunkjanzhou_123_github_io||[]).push([[589],{9916:s=>{s.exports=JSON.parse('{"label":"Nestjs","permalink":"/blog/tags/nestjs","allTagsPath":"/blog/tags","count":2}')}}]);

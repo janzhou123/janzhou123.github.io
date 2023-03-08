@@ -1,14 +1,20 @@
 ---
-slug: nestjs-config进阶
-title: Nestjs基础配置进阶
+slug: nestjs-config进阶1
+title: Nestjs通用配置-基础进阶1
 date: 2022-10-15
 authors: zxx
 tags: [Nestjs, nestjs/config, cross-env, dotenv]
 keywords: [Nestjs, nestjs/config, cross-env, dotenv]
-description: Nestjs基础配置进阶
+description: Nestjs通用配置-基础配置
 ---
 
+:::tip 提示
+请先阅读前序章节，本文代码依赖前序章节，[Nestjs 通用配置-基础配置](Nestjs%E9%80%9A%E7%94%A8%E9%85%8D%E7%BD%AE-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE.md)
+:::
+
 在我们开发过程中一般至少会有开发环境和正式环境，两个环境的**配置项**虽然相同但是**配置值**会存在不一样，这个时候就需要我们按照不同的环境进行不同的配置。
+
+## 新建配置文件
 
 先在`.env`文件同级目录下新建两个文件，拷贝`.env`内容到两个新文件：
 
@@ -24,6 +30,8 @@ DB_NAME=mydemo-dev
 DB_NAME=mydemo-prod
 ```
 
+## 在启动命令中设置环境变量
+
 我们需要增加`corss-env`插件，我们就可以在启动命令行上增加环境变量传递给应用程序
 
 ```text showLineNumbers
@@ -37,6 +45,8 @@ pnpm add cross-env -D
 "start:debug": "nest start --debug --watch",
 "start:prod": "cross-env NODE_ENV=production node dist/main",
 ```
+
+## 配置文件读取
 
 修改`app.module.ts`，引入环境变量，并在 `ConfigModule` 参数里面引入环境变量
 
@@ -62,6 +72,8 @@ export class AppModule {}
 ```
 
 接着你就可以使用不同的启动命令 `pnpm start:dev 或者 pnpm start:prod` ，访问 API 接口[http://localhost:3000/config](http://localhost:3000/config)，就可以得到不同环境的配置信息了。
+
+## 抽离公共配置项
 
 这样的配置可以满足 90%的 Nestjs 的配置需求了，但是会存在配置项冗余的问题，比如我们的新建的两个文件里面就冗余了配置项 `DB_TYPE=MYSQL`, 我们的例子里面只有数据库的配置项，如果项目的配置项很多，就会冗余非常多的配置，维护起来就非常麻烦。接下来我们解决这个问题。
 
@@ -98,4 +110,10 @@ const envFilePath = `.env.${process.env.NODE_ENV || `development`}`;
 export class AppModule {}
 ```
 
-完成以上操作我们就实现了不同环境不同配置项的读取，并且统一管理公共配置项。那么 Nestjs 基础配置进阶就介绍完了！
+## 总结
+
+我们完成了对不同环境不同配置项的读取，并且统一管理公共配置项。那么此次对配置管理就介绍完了！
+
+## 源码
+
+源码可以参考这里[config-demo](https://github.com/janzhou123/config-demo)

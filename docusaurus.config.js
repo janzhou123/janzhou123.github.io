@@ -22,9 +22,8 @@ const config = {
 
   presets: [
     [
-      "classic",
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      "@docusaurus/preset-classic",
+      {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
@@ -34,13 +33,14 @@ const config = {
         },
         blog: {
           showReadingTime: true,
-          blogSidebarTitle: "全部博文",
+          blogSidebarTitle: "全部文章",
           blogSidebarCount: "ALL",
+          editLocalizedFiles: false,
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
-      }),
+      },
     ],
   ],
 

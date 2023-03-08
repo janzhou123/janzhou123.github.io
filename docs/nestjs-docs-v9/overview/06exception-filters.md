@@ -26,7 +26,7 @@ Nest 带有一个内置的**异常层**，负责处理应用程序中所有未�
 
 ### 抛出标准异常
 
-Nest提供了一个内置的`HttpException`类，来自`@nestjs/common`包。对于典型的基于HTTP REST/GraphQL API的应用程序，当某些错误条件发生时，最好的做法是发送标准的HTTP响应对象。
+Nest 提供了一个内置的`HttpException`类，来自`@nestjs/common`包。对于典型的基于 HTTP REST/GraphQL API 的应用程序，当某些错误条件发生时，最好的做法是发送标准的 HTTP 响应对象。
 
 例如，在 `CatsController` 中，我们有一个`findAll()`方法（ `GET` 路由处理程序）。假设此路由处理程序出于某种原因引发异常。为了演示这一点，我们将按如下方式对其进行硬编码：
 
@@ -77,7 +77,7 @@ async findAll() {
 async findAll() {
   try {
     await this.service.findAll()
-  } catch (error) { 
+  } catch (error) {
     throw new HttpException({
       status: HttpStatus.FORBIDDEN,
       error: 'This is a custom message',
@@ -104,7 +104,7 @@ async findAll() {
 ```jsx title="forbidden.exception" showLineNumbers
 export class ForbiddenException extends HttpException {
   constructor() {
-    super('Forbidden', HttpStatus.FORBIDDEN);
+    super("Forbidden", HttpStatus.FORBIDDEN);
   }
 }
 ```
@@ -118,9 +118,9 @@ async findAll() {
 }
 ```
 
-### 内置HTTP异常
+### 内置 HTTP 异常
 
-Nest 提供了一组标准异常，这些异常继承自基础 'HttpException'。这些是从“@nestjs/common”包中公开的，并且代表许多最常见的HTTP异常：
+Nest 提供了一组标准异常，这些异常继承自基础 'HttpException'。这些是从“@nestjs/common”包中公开的，并且代表许多最常见的 HTTP 异常：
 
 - `BadRequestException`
 - `UnauthorizedException`
@@ -146,7 +146,10 @@ Nest 提供了一组标准异常，这些异常继承自基础 'HttpException'�
 所有内置异常还可以使用`options`参数提供错误原因和错误描述：
 
 ```jsx showLineNumbers
-throw new BadRequestException('Something bad happened', { cause: new Error(), description: 'Some error description' })
+throw new BadRequestException("Something bad happened", {
+  cause: new Error(),
+  description: "Some error description",
+});
 ```
 
 使用上述代码，返回的响应体如下：
@@ -155,11 +158,11 @@ throw new BadRequestException('Something bad happened', { cause: new Error(), de
 {
   "message": "Something bad happened",
   "error": "Some error description",
-  "statusCode": 400,
+  "statusCode": 400
 }
 ```
 
-### 异常过滤器
+### 异常过滤器 filter
 
 虽然内置异常过滤器可以自动为你处理许多情况，但你可能希望对异常层进行完全控制。例如，你可能希望添加日志记录或根据某些动态因素使用不同的 JSON 架构。**异常过滤器**正是为此目的而设计的。它允许你控制确切的控制流以及发送回客户端的响应内容。
 
@@ -202,8 +205,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
 
 让我们看看 `catch()` 方法的参数。`exception` 参数是当前正在处理的异常对象。`host` 参数是一个`ArgumentsHost` 对象。`ArgumentsHost`是一个功能强大的实用程序对象，我们将在 [执行上下文章节]中进一步研究它。在此代码示例中，我们使用它来获取对传递给原始请求处理程序（在异常发生控制器中的）的`Request` 和 `Response`对象的引用。在此代码示例中，我们在`ArgumentsHost`上使用了一些帮助程序方法来获取所需的`Request` 和 `Response`对象。了解更多关于`ArgumentsHost` [这里]。
 
-这种抽象级别的原因是`ArgumentsHost`在所有上下文中都起作用（例如，我们现在正在使用的HTTP服务器上下文，以及微服务和WebSockets）。在`执行上下文`章节中，我们将看到如何使用`ArgumentsHost`及[其帮助程序函数的强大功能访问](https://docs.nestjs.com/fundamentals/execution-context#host-methods”)执行上下文的适当基础参数。这将允许我们编写在所有上下文中运行的通用异常过滤器。
-
+这种抽象级别的原因是`ArgumentsHost`在所有上下文中都起作用（例如，我们现在正在使用的 HTTP 服务器上下文，以及微服务和 WebSockets）。在`执行上下文`章节中，我们将看到如何使用`ArgumentsHost`及[其帮助程序函数的强大功能访问](https://docs.nestjs.com/fundamentals/execution-context#host-methods”)执行上下文的适当基础参数。这将允许我们编写在所有上下文中运行的通用异常过滤器。
 
 ### 绑定过滤器
 
@@ -262,8 +264,8 @@ bootstrap();
 全局范围的过滤器用于整个应用程序，用于每个控制器和每个路由处理程序。在依赖注入方面，从任何模块外部注册的全局过滤器（如上例所示使用 `useGlobalFilters()` ）无法注入依赖关系，因为这是在任何模块的上下文之外完成的。为了解决此问题，您可以使用以下结构直接从任何模块注册一个全局范围的过滤器：
 
 ```jsx {5-9} title="app.module"  showLineNumbers
-import { Module } from '@nestjs/common';
-import { APP_FILTER } from '@nestjs/core';
+import { Module } from "@nestjs/common";
+import { APP_FILTER } from "@nestjs/core";
 
 @Module({
   providers: [
@@ -277,15 +279,16 @@ export class AppModule {}
 ```
 
 :::tip 提示
-当使用这种方法为过滤器执行依赖注入时，请注意，无论采用这种构造的模块如何，过滤器实际上都是全局的。这应该在哪里完成？选择定义过滤器（HttpExceptionFilter在上面的示例中）的模块。此外，useClass这不是处理自定义提供程序注册的唯一方法。在这里了解更多。
+当使用这种方法为过滤器执行依赖注入时，请注意，无论采用这种构造的模块如何，过滤器实际上都是全局的。这应该在哪里完成？选择定义过滤器（HttpExceptionFilter 在上面的示例中）的模块。此外，useClass 这不是处理自定义提供程序注册的唯一方法。在这里了解更多。
 :::
 
 您可以根据需要使用此技术添加任意数量的过滤器；只需将每个添加到提供程序数组即可。
 
 ### 抓住一切
+
 为了捕获每个未处理的异常（无论异常类型如何），将@Catch()装饰器的参数列表留空，例如@Catch().
 
-在下面的示例中，我们有一个与平台无关的代码，因为它使用HTTP 适配器来传递响应，并且不直接使用任何特定于平台的对象（Request和Response）：
+在下面的示例中，我们有一个与平台无关的代码，因为它使用 HTTP 适配器来传递响应，并且不直接使用任何特定于平台的对象（Request 和 Response）：
 
 ```jsx showLineNumbers
 import {
@@ -329,13 +332,14 @@ export class AllExceptionsFilter implements ExceptionFilter {
 :::
 
 ### 继承
+
 通常，您将创建完全定制的异常过滤器来满足您的应用程序需求。但是，当您希望简单地扩展内置的默认全局异常过滤器并根据某些因素覆盖行为时，可能会有一些用例。
 
 为了将异常处理委托给基本过滤器，您需要扩展`BaseExceptionFilter`并调用继承的`catch()`方法。
 
 ```jsx {4-9} title="all-exceptions.filter"  showLineNumbers
-import { Catch, ArgumentsHost } from '@nestjs/common';
-import { BaseExceptionFilter } from '@nestjs/core';
+import { Catch, ArgumentsHost } from "@nestjs/common";
+import { BaseExceptionFilter } from "@nestjs/core";
 
 @Catch()
 export class AllExceptionsFilter extends BaseExceptionFilter {
@@ -346,7 +350,7 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
 ```
 
 :::caution 警告
-扩展的方法作用域和控制器作用域的过滤器BaseExceptionFilter不应使用实例化new。相反，让框架自动实例化它们。
+扩展的方法作用域和控制器作用域的过滤器 BaseExceptionFilter 不应使用实例化 new。相反，让框架自动实例化它们。
 :::
 
 上面的实现只是一个演示方法的 shell。您对扩展异常过滤器的实现将包括您定制的业务逻辑（例如，处理各种条件）。

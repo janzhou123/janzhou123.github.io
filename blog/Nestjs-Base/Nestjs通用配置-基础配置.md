@@ -1,6 +1,6 @@
 ---
 slug: nestjs-config-@nestjs/config
-title: Nestjs基础配置-@nestjs/config
+title: Nestjs通用配置-基础配置
 date: 2022-09-25
 authors: zxx
 tags: [Nestjs, nestjs/config]

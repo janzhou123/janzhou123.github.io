@@ -8,6 +8,8 @@ keywords: [Nestjs, nestjs/config, cross-env, js-yaml, lodash]
 description: Nestjs通用配置-基础进阶2
 ---
 
+## 开始
+
 随着工程越来越复杂，需要的配置项也越来越复杂，之前的配置方式也会在维护的时候产生麻烦，本篇文章将介绍使用`yaml`文件对工程配置项进行管理。
 
 :::tip 提示
@@ -128,9 +130,9 @@ import configuration from "./configuration";
 export class AppModule {}
 ```
 
-## 新建 API `/config`
+## 修改 API `/config`
 
-在 `app.controller.ts`中新增 API `/config`
+在 `app.controller.ts`中修改 API `/config`
 
 ```ts title='app.controller.ts' showLineNumbers
 import { Controller, Get } from "@nestjs/common";

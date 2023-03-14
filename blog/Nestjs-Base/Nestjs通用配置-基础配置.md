@@ -8,6 +8,8 @@ keywords: [Nestjs, nestjs/config]
 description: Nestjs基础配置-@nestjs/config
 ---
 
+## 开始
+
 通常我们建立后台应用程序的时候，是需要提前配置一些工程参数，例如数据库地址\用户名密码，redis 地址\密码等等，本篇文章将介绍如何通过`@nestjs/config`进行参数配置。
 
 :::tip 提示
@@ -22,6 +24,8 @@ description: Nestjs基础配置-@nestjs/config
 pnpm add @nestjs/config
 ```
 
+## 新增配置文件
+
 安装完成后，我们在和`package.json`同级别的目录上新建`.env`文件
 
 ```ts title='.env' showLineNumbers
@@ -31,6 +35,8 @@ DB_URL=http://localhost:3306
 DB_USER=root
 DB_PWD=root
 ```
+
+## 配置导入
 
 同时我们修改`app.module.ts`文件，引入`ConfigModule`,并将`isGlobal`设置为`true`，让`ConfigModule`可以全局使用。
 
@@ -90,6 +96,15 @@ export class AppController {
   "dbUser": "root",
   "dbPwd": "root"
 }
+```
+
+## 总结
+
+我们通过上述操作，完成了以下任务：
+
+```text
+1、引入配置文件并读取配置文件。
+2、新增接口config，返回所配置内容。
 ```
 
 下一节我们将介绍 Nestjs 配置的进阶用法。

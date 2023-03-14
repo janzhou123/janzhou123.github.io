@@ -8,7 +8,7 @@ keywords: [Nestjs, nestjs/config]
 description: Nestjs基础配置-@nestjs/config
 ---
 
-通常我们建立后台应用程序的时候，是需要提前配置一些工程参数，例如数据库地址\用户名密码，redis 地址\密码等等，本篇文章将介绍 Nestjs 官方指定的配置方式`@nestjs/config`。
+通常我们建立后台应用程序的时候，是需要提前配置一些工程参数，例如数据库地址\用户名密码，redis 地址\密码等等，本篇文章将介绍如何通过`@nestjs/config`进行参数配置。
 
 :::tip 提示
 这里假定你已经建立一个 Nestjs 工程，如果没有请执行如下命令：

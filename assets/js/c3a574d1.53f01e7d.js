@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkjanzhou_123_github_io=self.webpackChunkjanzhou_123_github_io||[]).push([[2904],{4584:a=>{a.exports=JSON.parse('{"label":"crud","permalink":"/blog/tags/crud","allTagsPath":"/blog/tags","count":1}')}}]);

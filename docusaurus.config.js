@@ -122,7 +122,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Zhouxiaoxiao, Inc. Built with Docusaurus.`,
+        copyright: `<p><a href="http://beian.miit.gov.cn/">湘ICP备2023005246号</a></p><p>Copyright © 2023 - PRESENT Zhouxiaoxiao Built with Docusaurus.</p>`,
       },
       prism: {
         theme: lightCodeTheme,

@@ -402,4 +402,4 @@ export class TransformInterceptor<T>
 
 ## 源码
 
-源码可以参考这里[config-typeorm](https://github.com/janzhou123/config-typeorm)
+源码可以参考这里[config-typeorm](https://github.com/janzhou123/config-typeorm)，喜欢的话给个 star 吧。

@@ -317,6 +317,8 @@ async function bootstrap() {
 bootstrap();
 ```
 
+重启完成后访问地址[http://localhost:3000/doc.html](http://localhost:3000/doc.html),就可以进行接口测试了。
+
 ## 配置全局返回统一格式
 
 ### 配置错误过滤器

@@ -20,7 +20,7 @@ description: Nestjs通用配置-数据库配置
 pnpm add @nestjs/typeorm typeorm mysql2  ---typeorm包和Mysql数据库驱动mysql2
 pnpm add @nestjsx/crud class-transformer class-validator @nestjsx/crud-typeorm  ---crud包和校验扩展包
 pnpm add @nestjs/swagger swagger-ui-express  nestjs-knife4  ---swagger包和对应的UI扩展包
-pnpm add nestjs-pino pino-http  ---pino日志扩展包
+pnpm add nestjs-pino pino-http pino  ---pino日志扩展包
 pnpm add -D pino-pretty  ---开发环境日志显示格式化扩展包
 ```
 

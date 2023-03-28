@@ -69,7 +69,7 @@ const config = {
             position: "left",
           },
           {
-            href: "https://github.com/janzhou123",
+            href: "https://github.com/janzhou123/janzhou123.github.io",
             label: "GitHub",
             position: "right",
           },

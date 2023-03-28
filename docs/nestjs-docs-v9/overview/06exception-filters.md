@@ -3,6 +3,8 @@ sidebar_label: 异常过滤器
 title: 异常过滤器
 sidebar_position: 6
 hide_title: true
+description: nestjs的异常过滤器 翻译
+keywords: [nestjs, filters, exception, 异常过滤器, zhouxiaoxiao]
 ---
 
 ### 异常过滤器

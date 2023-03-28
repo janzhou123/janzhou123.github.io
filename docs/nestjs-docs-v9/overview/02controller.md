@@ -3,6 +3,8 @@ sidebar_label: 控制器
 title: 控制器
 sidebar_position: 2
 hide_title: true
+description: nestjs的 控制器 翻译
+keywords: [nestjs, controller, 控制器, zhouxiaoxiao]
 ---
 
 ### Controller 控制器

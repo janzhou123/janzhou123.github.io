@@ -3,9 +3,12 @@ sidebar_label: 模块
 title: 模块
 sidebar_position: 4
 hide_title: true
+description: nestjs的模块 翻译
+keywords: [nestjs, modules, 模块, zhouxiaoxiao]
 ---
 
 ### 模块
+
 模块就是一个声明了装饰器`@Module()`的类。装饰器`@Module()`提供了元数据，以便让`Nest`组织应用程序结构。
 
 ![来自静态目录的图像](../../images/nestjs-docs-v9/overview/Modules_1.png)
@@ -14,14 +17,14 @@ hide_title: true
 
 `@Module()`装饰器采用单个对象，其属性描述如下：
 
-|||
-|:-----:|:-----:|
-|`providers`| 由 Nest 注入器实例化的提供者，并且可以至少在整个模块中共享|
-|`controllers`|必须创建的一组控制器|
-|`imports`|导入模块的列表，这些模块导出了此模块中所需提供者|
-|`exports`|由本模块提供并应在其他模块中可用的提供者的子集。|
+|               |                                                            |
+| :-----------: | :--------------------------------------------------------: |
+|  `providers`  | 由 Nest 注入器实例化的提供者，并且可以至少在整个模块中共享 |
+| `controllers` |                    必须创建的一组控制器                    |
+|   `imports`   |      导入模块的列表，这些模块导出了此模块中所需提供者      |
+|   `exports`   |      由本模块提供并应在其他模块中可用的提供者的子集。      |
 
-默认情况下，模块封装`providers`。这意味着无法注入既不是当前模块的直接组成部分，也不是从导入的模块导出的`providers`。因此，您可以将模块中导出的`providers`视为模块的公共接口或API。
+默认情况下，模块封装`providers`。这意味着无法注入既不是当前模块的直接组成部分，也不是从导入的模块导出的`providers`。因此，您可以将模块中导出的`providers`视为模块的公共接口或 API。
 
 ### 功能模块
 
@@ -30,9 +33,9 @@ hide_title: true
 为了演示这一点，我们将创建`CatsModule`。
 
 ```jsx title="cats/cats.module.ts"
-import { Module } from '@nestjs/common';
-import { CatsController } from './cats.controller';
-import { CatsService } from './cats.service';
+import { Module } from "@nestjs/common";
+import { CatsController } from "./cats.controller";
+import { CatsService } from "./cats.service";
 
 @Module({
   controllers: [CatsController],
@@ -42,21 +45,23 @@ export class CatsModule {}
 ```
 
 :::tip 提示
-使用CLI创建模块，只需执行`$ nest g module cats`命令即可。
+使用 CLI 创建模块，只需执行`$ nest g module cats`命令即可。
 :::
 
 以上，我们已经创建了`cats.module.ts`文件，并把与这个模块相关的所有东西都移到了`cats`目录下。我们需要做的最后一件事是将这个模块导入根模块 (根模块`AppModule`, 已经定义在`app.module.ts`文件内)。
 
 ```jsx title="app.module.ts"
-import { Module } from '@nestjs/common';
-import { CatsModule } from './cats/cats.module';
+import { Module } from "@nestjs/common";
+import { CatsModule } from "./cats/cats.module";
 
 @Module({
   imports: [CatsModule],
 })
 export class AppModule {}
 ```
+
 目录结构如下：
+
 ```
 src
 ├──cats
@@ -80,14 +85,14 @@ src
 实际上，每个模块都是一个**共享模块**，一旦创建就能被任意模块重复使用。假设我们要在几个模块之间共享`CatsService`实例，则需要把`CatsService`放到模块`CatsModule`的`exports`数组中，如下所示：
 
 ```jsx title="cats/cats.module.ts"
-import { Module } from '@nestjs/common';
-import { CatsController } from './cats.controller';
-import { CatsService } from './cats.service';
+import { Module } from "@nestjs/common";
+import { CatsController } from "./cats.controller";
+import { CatsService } from "./cats.service";
 
 @Module({
   controllers: [CatsController],
   providers: [CatsService],
-  exports: [CatsService]
+  exports: [CatsService],
 })
 export class CatsModule {}
 ```
@@ -126,17 +131,16 @@ export class CatsModule {
 
 但是，由于[`循环依赖性`]，模块类不能注入到提供者中。
 
-
 #### Global modules
 
-如果您必须在任何地方导入同一组模块，则可能会变得乏味。与Nest不同，[Angular](https://angular.io)`提供者`在全局范围内注册。定义后，它们随处可用。但是，Nest将提供程序封装在模块范围内。如果不先导入封装模块，则无法在其他地方使用模块的提供程序。
+如果您必须在任何地方导入同一组模块，则可能会变得乏味。与 Nest 不同，[Angular](https://angular.io)`提供者`在全局范围内注册。定义后，它们随处可用。但是，Nest 将提供程序封装在模块范围内。如果不先导入封装模块，则无法在其他地方使用模块的提供程序。
 
 当您想要提供一组开箱即用的提供程序（例如，帮助程序、数据库连接等）时，请使用`@Global()` 装饰器使模块全局化。
 
 ```jsx
-import { Module, Global } from '@nestjs/common';
-import { CatsController } from './cats.controller';
-import { CatsService } from './cats.service';
+import { Module, Global } from "@nestjs/common";
+import { CatsController } from "./cats.controller";
+import { CatsService } from "./cats.service";
 
 @Global()
 @Module({
@@ -155,14 +159,14 @@ export class CatsModule {}
 
 ### 动态模块
 
-Nest模块系统包括一个强大的功能，称为**动态模块**。此功能使您能够轻松创建可动态注册和配置提供程序的可自定义模块。动态模块详细介绍[点这里（/fundamentals/dynamic-modules）]。在本章中，我们将简要概述以完成模块的介绍。
+Nest 模块系统包括一个强大的功能，称为**动态模块**。此功能使您能够轻松创建可动态注册和配置提供程序的可自定义模块。动态模块详细介绍[点这里（/fundamentals/dynamic-modules）]。在本章中，我们将简要概述以完成模块的介绍。
 
 下面是`DatabaseModule`的动态模块定义示例：
 
 ```jsx
-import { Module, DynamicModule } from '@nestjs/common';
-import { createDatabaseProviders } from './database.providers';
-import { Connection } from './connection.provider';
+import { Module, DynamicModule } from "@nestjs/common";
+import { createDatabaseProviders } from "./database.providers";
+import { Connection } from "./connection.provider";
 
 @Module({
   providers: [Connection],
@@ -183,7 +187,7 @@ export class DatabaseModule {
 `forRoot()`方法可以同步或异步返回动态模块（即通过`Promise`）。
 :::
 
-模块`DatabaseModule`在装饰器`@Module()`中定义了一个`Connection`的提供者，但是此模块的返回值还要看`forRoot()`方法，它返回了一系列的提供者，例如 repositories。所以，请注意动态模块的返回值是扩展了装饰器`@Module()`定义，而不是覆盖。所以模块`DatabaseModule`导出的`providers`，包含两部分，一部分是静态定义的`Connection`，另外一部分是`forRoot()`方法动态生成的providers。
+模块`DatabaseModule`在装饰器`@Module()`中定义了一个`Connection`的提供者，但是此模块的返回值还要看`forRoot()`方法，它返回了一系列的提供者，例如 repositories。所以，请注意动态模块的返回值是扩展了装饰器`@Module()`定义，而不是覆盖。所以模块`DatabaseModule`导出的`providers`，包含两部分，一部分是静态定义的`Connection`，另外一部分是`forRoot()`方法动态生成的 providers。
 
 如果你想注册一个全局的动态模块，设置`global`=`true`即可。
 
@@ -203,9 +207,9 @@ export class DatabaseModule {
 可以通过以下方式导入和配置`DatabaseModule`：
 
 ```jsx
-import { Module } from '@nestjs/common';
-import { DatabaseModule } from './database/database.module';
-import { User } from './users/entities/user.entity';
+import { Module } from "@nestjs/common";
+import { DatabaseModule } from "./database/database.module";
+import { User } from "./users/entities/user.entity";
 
 @Module({
   imports: [DatabaseModule.forRoot([User])],
@@ -216,9 +220,9 @@ export class AppModule {}
 如果你想反过来重新导出动态模块，你可以在`exports`数组中省略`forRoot()`方法调用：
 
 ```jsx
-import { Module } from '@nestjs/common';
-import { DatabaseModule } from './database/database.module';
-import { User } from './users/entities/user.entity';
+import { Module } from "@nestjs/common";
+import { DatabaseModule } from "./database/database.module";
+import { User } from "./users/entities/user.entity";
 
 @Module({
   imports: [DatabaseModule.forRoot([User])],

@@ -3,6 +3,8 @@ sidebar_label: 第一步
 title: 第一步
 sidebar_position: 1
 hide_title: true
+description: nestjs的 第一步 翻译
+keywords: [nestjs, first steps, 第一步, zhouxiaoxiao]
 ---
 
 ### 第一步

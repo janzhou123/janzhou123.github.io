@@ -128,6 +128,12 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      metadata: [
+        {
+          name: "keywords",
+          content: "nestjs, reactjs, developer, Zhouxiaoxiao,full stack",
+        },
+      ],
     }),
 };
 

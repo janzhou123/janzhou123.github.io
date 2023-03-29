@@ -492,3 +492,5 @@ async findAll(
 介绍举例实现数据转换。
 
 介绍如何设置默认值。
+
+示例代码请参数[Github](https://github.com/janzhou123/nestjs-pipes-demo) 欢迎 star。

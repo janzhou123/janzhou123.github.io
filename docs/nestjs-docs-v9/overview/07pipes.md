@@ -493,4 +493,4 @@ async findAll(
 
 介绍如何设置默认值。
 
-示例代码请参数[Github](https://github.com/janzhou123/nestjs-pipes-demo) 欢迎 star。
+示例代码请参考[Github](https://github.com/janzhou123/nestjs-pipes-demo) 欢迎 star。

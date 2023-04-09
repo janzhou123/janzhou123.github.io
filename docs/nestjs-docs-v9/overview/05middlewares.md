@@ -7,6 +7,12 @@ description: nestjs的中间件 翻译
 keywords: [nestjs, middlewares, 中间件, zhouxiaoxiao]
 ---
 
+:::info
+本文翻译自官网文档 v9:[https://docs.nestjs.com/](https://docs.nestjs.com/)
+
+大家一起交流学习Nestjs React全栈技术，QQ群：298304381
+:::
+
 ### 中间件
 
 中间件是一个在路由处理程序之前被调用的函数。中间件函数可以访问[`请求`](https://expressjs.com/en/4x/api.html#req)和[`响应`](https://expressjs.com/en/4x/api.html#res)对象，以及应用程序的请求-响应周期中的`next()`中间件函数。下一个中间件函数通常由一个名为`next`的变量来表示。

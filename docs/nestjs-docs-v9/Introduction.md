@@ -6,7 +6,7 @@ hide_title: true
 ---
 
 :::info
-注意: 本文翻译自官网文档 v9:[https://docs.nestjs.com/](https://docs.nestjs.com/)
+本文翻译自官网文档 v9:[https://docs.nestjs.com/](https://docs.nestjs.com/)
 :::
 
 ## 介绍

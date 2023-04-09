@@ -7,6 +7,13 @@ description: nestjs的模块 翻译
 keywords: [nestjs, modules, 模块, zhouxiaoxiao]
 ---
 
+:::info
+本文翻译自官网文档 v9:[https://docs.nestjs.com/](https://docs.nestjs.com/)
+
+大家一起交流学习Nestjs React全栈技术，QQ群：298304381
+:::
+
+
 ### 模块
 
 模块就是一个声明了装饰器`@Module()`的类。装饰器`@Module()`提供了元数据，以便让`Nest`组织应用程序结构。

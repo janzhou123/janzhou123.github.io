@@ -19,6 +19,12 @@ keywords:
   ]
 ---
 
+:::info
+本文翻译自官网文档 v9:[https://docs.nestjs.com/](https://docs.nestjs.com/)
+
+大家一起交流学习Nestjs React全栈技术，QQ群：298304381
+:::
+
 ### 管道
 
 带上装饰器 `@Injectable()` 并实现了 `PipeTransform` 接口的类，就是管道。

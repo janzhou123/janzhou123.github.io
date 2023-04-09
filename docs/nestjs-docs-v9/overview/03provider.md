@@ -7,6 +7,12 @@ description: nestjs的提供者 翻译
 keywords: [nestjs, provider, 提供者, zhouxiaoxiao]
 ---
 
+:::info
+本文翻译自官网文档 v9:[https://docs.nestjs.com/](https://docs.nestjs.com/)
+
+大家一起交流学习Nestjs React全栈技术，QQ群：298304381
+:::
+
 ### 提供者(Providers)
 
 `Providers`在 Nest 中是一个基础性的概念。许多 Nest 基类都被认为是 provider，`services`, `repositories`, `factories`, `helpers`等等`(译者注：这里更愿意理解为组件-Component)`。提供者(组件)可以通过依赖关系直接进行注入，因此各个对象之间可以建立复杂的关系，并且这种复杂的关系是委托给 Nest 运行时系统进行管理的。提供者是一个我们使用装饰器@Injectable()进行注解的类。

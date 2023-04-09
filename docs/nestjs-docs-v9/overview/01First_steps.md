@@ -7,6 +7,12 @@ description: nestjs的 第一步 翻译
 keywords: [nestjs, first steps, 第一步, zhouxiaoxiao]
 ---
 
+:::info
+本文翻译自官网文档 v9:[https://docs.nestjs.com/](https://docs.nestjs.com/)
+
+大家一起交流学习Nestjs React全栈技术，QQ群：298304381
+:::
+
 ### 第一步
 
 在这组文章中，你将学习 Nest 的核心基础知识。为了熟悉 Nest 应用程序的基本构件，我们将建立一个基本的 CRUD 应用程序，其功能涵盖了入门级的很多方面。

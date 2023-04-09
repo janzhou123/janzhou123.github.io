@@ -28,6 +28,9 @@ function HomepageHeader() {
           ></span>Hello 我是zhouxiaoxiao，一名全栈攻城狮</h1>
         <p className="hero__subtitle">这里会记录我日常工作中使用的和学习的新技术，如果符合你的需求，随便食用。</p>
         <p className="hero__subtitle">React爱好者，喜爱前端技术，多年后端开发攻城狮，目前寻找全栈工作的机会，目标成为独立开发者。</p>
+        <p className="hero__subtitle">学习交流Nexjts\Reactjs全栈技术的朋友，可加QQ群: 298304381</p>
+
+         
 
         <animated.div style={trails[3]}>
           <a className={styles.intro} href={'./about'}>

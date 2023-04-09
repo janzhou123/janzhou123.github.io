@@ -7,6 +7,12 @@ description: nestjs的 控制器 翻译
 keywords: [nestjs, controller, 控制器, zhouxiaoxiao]
 ---
 
+:::info
+本文翻译自官网文档 v9:[https://docs.nestjs.com/](https://docs.nestjs.com/)
+
+大家一起交流学习Nestjs React全栈技术，QQ群：298304381
+:::
+
 ### Controller 控制器
 
 控制器负责处理传入的请求并向客户返回响应。

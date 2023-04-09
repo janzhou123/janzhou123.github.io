@@ -7,6 +7,12 @@ description: nestjs的异常过滤器 翻译
 keywords: [nestjs, filters, exception, 异常过滤器, zhouxiaoxiao]
 ---
 
+:::info
+本文翻译自官网文档 v9:[https://docs.nestjs.com/](https://docs.nestjs.com/)
+
+大家一起交流学习Nestjs React全栈技术，QQ群：298304381
+:::
+
 ### 异常过滤器
 
 Nest 带有一个内置的**异常层**，负责处理应用程序中所有未处理的异常。当应用程序代码未处理异常时，该层会捕获该异常，然后自动发送适当的用户友好响应。
